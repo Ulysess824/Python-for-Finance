@@ -1,1 +1,1 @@
-Pequeño proyecto en el que se aplica el modelo CAPM para un activo y luego para una cartera en conjunto. 
+En esta carpeta subo proyectos aplicando teorías y modelos financieros dentro de Python.
