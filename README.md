@@ -43,13 +43,5 @@ El contenido está organizado de forma modular, cubriendo los pilares fundamenta
 
 ---
 
-## 📈 Roadmap & SOTA
-Actualmente, el repositorio evoluciona hacia la integración de:
-- **Optimization:** Optimización de carteras mediante algoritmos genéticos.
-- **ML in Finance:** Aplicación de Random Forests y LSTMs para predicción de volatilidad.
-- **Alternative Data:** Sentimiento de mercado extraído de noticias mediante LLMs.
-
----
-
 **Autor:** [Ulysess824](https://github.com/Ulysess824)  
 *Finanzas Cuantitativas | Análisis de Datos | Inversión Inteligente*
