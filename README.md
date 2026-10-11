@@ -5,33 +5,61 @@ Este repositorio constituye un ecosistema de herramientas cuantitativas desarrol
 
 ---
 
+## 🗂️ Estructura del repositorio
+
+```
+Python-for-Finance/
+├── 01_Portfolio_Management/     # Gestión y optimización de carteras
+│   ├── Retorno y Volatilidad de un Portafolio.ipynb
+│   └── Random Portfolios/
+│       ├── Obteniendo ETFs válido.ipynb
+│       ├── Random Portfolios Vs Actively ETFs.ipynb
+│       ├── etfs_details_type_fund_flow.csv
+│       ├── portafolios_aleatorios.csv
+│       └── prices_etf.csv
+├── 02_Asset_Pricing/             # Valoración de activos y modelos de equilibrio
+│   └── CAPM.ipynb
+├── 03_Risk_Analysis/             # Riesgo, volatilidad y ratios de rendimiento
+│   ├── Midiendo la Volatilidad.ipynb
+│   └── Risk-Return Measures.ipynb
+├── 04_Technical_Analysis/        # Indicadores técnicos y señales de trading
+│   └── Indicadores Técnicos.ipynb
+├── 05_Market_Studies/            # Econometría y comportamiento de mercados
+│   ├── Estacionaridad de Indices bursatiles.ipynb
+│   └── IBEX 35 y Euribor.ipynb
+└── Data/                         # Datos auxiliares compartidos entre notebooks
+    └── resultado.csv
+```
+
+---
+
 ## 🚀 Áreas de Enfoque (Core Pillars)
 
-El contenido está organizado de forma modular, cubriendo los pilares fundamentales de las finanzas cuantitativas:
-
-### 1. [Management & Optimization](./01_Portfolio_Management/)
+### 1. [Portfolio Management](./01_Portfolio_Management/)
 *Implementación de estrategias de inversión y simulación.*
-- **Random Portfolios:** Análisis comparativo de carteras aleatorias frente a gestión activa (ETFs).
-- **Portfolio Analytics:** Cálculo de retornos esperados y varianzas bajo el enfoque de Markowitz.
+- **[Retorno y Volatilidad de un Portafolio](./01_Portfolio_Management/Retorno%20y%20Volatilidad%20de%20un%20Portafolio.ipynb):** Cálculo de retornos esperados y varianzas de una cartera bajo el enfoque de Markowitz.
+- **[Random Portfolios](./01_Portfolio_Management/Random%20Portfolios/):** Generación de carteras aleatorias y comparación de su desempeño frente a ETFs de gestión activa.
 
-### 2. [Asset Pricing & Valuation](./02_Asset_Pricing/)
+### 2. [Asset Pricing](./02_Asset_Pricing/)
 *Modelización teórica del valor y equilibrio de mercado.*
-- **CAPM (Capital Asset Pricing Model):** Estimación de Betas y rentabilidades exigidas.
-- **Financial Valuation:** Marcos de valoración de activos financieros bajo distintas métricas de descuento.
+- **[CAPM](./02_Asset_Pricing/CAPM.ipynb):** Modelo de Valoración de Activos de Capital — estimación de Beta mediante regresión OLS y cálculo de rentabilidades exigidas.
 
-### 3. [Risk & Volatility Dynamics](./03_Risk_Analysis/)
+### 3. [Risk Analysis](./03_Risk_Analysis/)
 *Métricas avanzadas para la gestión de la exposición al riesgo.*
-- **Volatility Measuring:** Modelos de estimación de volatilidad histórica y realizada.
-- **Risk-Return Ratios:** Cálculo de Sharpe Ratio, Sortino y otras métricas de rendimiento ajustado por riesgo.
+- **[Midiendo la Volatilidad](./03_Risk_Analysis/Midiendo%20la%20Volatilidad.ipynb):** Cálculo de retornos simples y logarítmicos, y estimación de volatilidad histórica.
+- **[Risk-Return Measures](./03_Risk_Analysis/Risk-Return%20Measures.ipynb):** Ratios de rendimiento ajustado al riesgo (Sharpe, Sortino, entre otros).
 
-### 4. [Market Intelligence & Econometrics](./05_Market_Studies/)
-*Estudio del comportamiento estadístico de los mercados.*
-- **Stationarity Analysis:** Pruebas de raíces unitarias (ADF/PP) en índices bursátiles para análisis de series temporales.
-- **Economic Interactivity:** Correlación y análisis entre el IBEX 35 y tipos de interés (Euribor).
-
-### 5. [Technical Indicators](./04_Technical_Analysis/)
+### 4. [Technical Analysis](./04_Technical_Analysis/)
 *Algoritmos de trading y señales de mercado.*
-- Librerías analíticas para la generación de indicadores técnicos (RSI, MACD, etc.) aplicados a datos en tiempo real o históricos.
+- **[Indicadores Técnicos](./04_Technical_Analysis/Indicadores%20T%C3%A9cnicos.ipynb):** Construcción de indicadores como medias móviles, RSI y MACD aplicados a series de precios.
+
+### 5. [Market Studies](./05_Market_Studies/)
+*Estudio del comportamiento estadístico de los mercados.*
+- **[Estacionaridad de Índices Bursátiles](./05_Market_Studies/Estacionaridad%20de%20Indices%20bursatiles.ipynb):** Pruebas de raíces unitarias (ADF/PP) para análisis de series temporales.
+- **[IBEX 35 y Euribor](./05_Market_Studies/IBEX%2035%20y%20Euribor.ipynb):** Análisis exploratorio y correlación entre el IBEX 35 y los tipos de interés (Euribor).
+
+### 📁 [Data](./Data/)
+*Conjuntos de datos auxiliares* utilizados como insumo o resultado intermedio de los notebooks (p. ej. `resultado.csv`).
 
 ---
 
@@ -43,5 +71,5 @@ El contenido está organizado de forma modular, cubriendo los pilares fundamenta
 
 ---
 
-**Autor:** [Ulysess824](https://github.com/Ulysess824)  
+**Autor:** [Ulysess824](https://github.com/Ulysess824)
 *Finanzas Cuantitativas | Análisis de Datos | Inversión Inteligente*
