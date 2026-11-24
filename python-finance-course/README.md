@@ -15,7 +15,7 @@ Curso práctico de finanzas cuantitativas con Python en dos sesiones.
 | 2.2 | [2.2_fundamental_screening](student/session_2/2.2_fundamental_screening.ipynb) · [Colab](https://colab.research.google.com/github/Ulysess824/Python-for-Finance/blob/main/python-finance-course/student/session_2/2.2_fundamental_screening.ipynb) | Screening fundamental |
 | 2.3 | [2.3_loan_amortization](student/session_2/2.3_loan_amortization.ipynb) · [Colab](https://colab.research.google.com/github/Ulysess824/Python-for-Finance/blob/main/python-finance-course/student/session_2/2.3_loan_amortization.ipynb) | Amortización de préstamos |
 | 2.4 | [2.4_dcf_uncertainty](student/session_2/2.4_dcf_uncertainty.ipynb) · [Colab](https://colab.research.google.com/github/Ulysess824/Python-for-Finance/blob/main/python-finance-course/student/session_2/2.4_dcf_uncertainty.ipynb) | DCF con incertidumbre |
-| 2.5 | [2.5_automated_report](instructor/session_2/2.5_automated_report/) | Informe HTML automatizado |
+| 2.5 | [2.5_automated_report](student/session_2/2.5_automated_report/2.5_automated_report.ipynb) · [script](instructor/session_2/2.5_automated_report/report.py) | Informe HTML automatizado |
 
 Las diapositivas están en [`slides/presentation.html`](slides/presentation.html) (ábrelas en el navegador, navega con ← →).
 

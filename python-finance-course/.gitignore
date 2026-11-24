@@ -8,3 +8,5 @@ venv/
 # generated outputs
 *.html.bak
 instructor/session_2/2.5_automated_report/output/
+**/output/
+data/demo_sales/

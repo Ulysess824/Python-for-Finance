@@ -6,3 +6,4 @@ yfinance>=0.2.40
 arch>=6.3
 nbformat>=5.9
 jupyter>=1.0
+scikit-learn>=1.3
