@@ -1,30 +1,296 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8">
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Python para Finanzas y Análisis de Datos — Presentación del curso</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Python for Finance — Curso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0f172a;--fg:#e2e8f0;--ac:#38bdf8}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,sans-serif}
-section{display:none;min-height:100vh;padding:8vh 10vw}section.active{display:block}
-h1{font-size:3rem;color:var(--ac)}h2{color:var(--ac)}li{margin:.5rem 0;font-size:1.3rem}
-code{background:#1e293b;padding:.1rem .4rem;border-radius:4px}
-nav{position:fixed;bottom:1rem;right:1.5rem;opacity:.6;font-size:.9rem}
-</style></head><body>
-<section class="active"><h1>Python for Finance</h1><p>Curso práctico en 2 sesiones</p></section>
-<section><h2>Sesión 1 — Modelos cuantitativos</h2><ul>
-<li>1.1 VaR con Monte Carlo</li><li>1.2 Black-Scholes</li><li>1.3 GARCH</li>
-<li>1.4 Optimización de carteras</li><li>1.5 Backtesting</li></ul></section>
-<section><h2>Sesión 2 — Análisis aplicado</h2><ul>
-<li>2.1 Consolidación de datos</li><li>2.2 Screening fundamental</li><li>2.3 Amortización de préstamos</li>
-<li>2.4 DCF con incertidumbre</li><li>2.5 Informe automatizado</li></ul></section>
-<section><h2>Cómo trabajamos</h2><ul>
-<li>Abre el notebook de <code>student/</code> en Colab</li>
-<li>Completa los <code>TODO</code></li>
-<li>Si falla la API: <code>data/sample/</code> se usa automáticamente</li></ul></section>
-<nav>← → para navegar</nav>
+:root{--red:#A6192E;--ink:#1f1f1f;--mute:#5f5f5f;--rule:#d9d9d9}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#e6e6e6;overflow:hidden;font-family:'Source Serif 4',Georgia,'Times New Roman',serif;color:var(--ink)}
+.stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;transform-origin:center;box-shadow:0 8px 40px rgba(0,0,0,.18);overflow:hidden}
+.slide{position:absolute;inset:0;padding:56px 76px 64px;opacity:0;visibility:hidden;transition:opacity .25s}
+.slide.on{opacity:1;visibility:visible}
+.slide:not(.dark)::before{content:"";position:absolute;left:76px;top:0;width:96px;height:10px;background:var(--red);border-radius:0 0 8px 8px}
+.slide.dark{background:var(--red);color:#fff}
+
+.hd{display:flex;align-items:center;gap:22px}
+.badge{background:var(--red);color:#fff;font:500 34px/1 'Barlow Condensed',sans-serif;padding:8px 15px 7px;border-radius:15px;letter-spacing:.02em;min-width:66px;text-align:center}
+.badge.sm{font:500 20px/1 'Barlow Condensed',sans-serif;padding:6px 12px 5px;min-width:44px;border-radius:12px}
+.kick{font:500 15px 'Barlow Condensed',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:2px}
+h2{font:400 42px/1.08 'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.01em}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:26px}
+.txt{font-size:20px;line-height:1.42}
+ul.b{list-style:none}
+ul.b li{position:relative;padding-left:24px;margin-bottom:11px}
+ul.b li::before{content:"";position:absolute;left:0;top:.72em;width:11px;height:2px;background:var(--red)}
+b{font-weight:600}
+.vs{margin-top:14px;border-top:1px solid var(--rule);padding-top:10px;font-size:18px;line-height:1.38;color:#333}
+.vs b{font:600 15px 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-right:8px}
+
+table{border-collapse:collapse;width:100%;font-size:19px}
+caption{caption-side:top;text-align:center;font:400 14px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;color:#333}
+thead th{border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);text-align:left;font:500 15px 'Barlow Condensed',sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:8px 10px}
+tbody td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.35}
+tbody tr:last-child td{border-bottom:2px solid var(--ink)}
+tbody td:first-child{font-weight:600}
+
+.colh{font:500 22px 'Barlow Condensed',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border-bottom:2px solid var(--red);padding-bottom:6px}
+.colh small{font-size:.62em;letter-spacing:.14em;color:var(--mute);margin-left:8px}
+.agenda{list-style:none}
+.agenda li{display:flex;align-items:baseline;gap:16px;padding:9px 0;border-bottom:1px solid var(--rule);font-size:19px;line-height:1.3}
+.agenda .n{font:500 22px 'Barlow Condensed',sans-serif;color:var(--red);min-width:36px}
+.agenda .d{margin-left:auto;font:400 16px 'Barlow Condensed',sans-serif;letter-spacing:.08em;color:var(--mute);white-space:nowrap}
+
+.topics{list-style:none;margin-top:8px}
+.topics li{display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--rule)}
+.topics li:last-child{border-bottom:none}
+.topics .tt{flex:1;font-size:19px;line-height:1.4}
+.topics .tt b{display:block;font-size:20px;margin-bottom:2px}
+
+.title{display:flex;flex-direction:column;justify-content:space-between;padding:80px 96px 84px;overflow:hidden}
+.logobox{width:112px;height:112px;background:#fff;border-radius:26px;display:flex;align-items:center;justify-content:center;padding:12px;position:relative;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.logobox img{width:100%;height:100%;object-fit:contain;display:block}
+.title .kick2{font:500 18px 'Barlow Condensed',sans-serif;letter-spacing:.3em;text-transform:uppercase;position:relative;margin-top:18px;opacity:.92}
+.title h1{font:300 90px/.98 'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.01em;position:relative;margin-top:10px}
+.title .sub{font-size:23px;line-height:1.4;position:relative}
+.title .sub span{display:block;font-style:italic;opacity:.88;font-size:20px;margin-top:4px}
+.motif{position:absolute;right:-150px;bottom:-150px;width:540px;height:540px;border-radius:130px;background:rgba(255,255,255,.08)}
+.motif.b{right:200px;bottom:-80px;width:240px;height:240px;border-radius:64px;background:rgba(255,255,255,.06)}
+.div{display:flex;flex-direction:column;justify-content:center;padding-left:96px;overflow:hidden}
+.numblock{width:140px;height:140px;border-radius:34px;background:#fff;color:var(--red);font:500 108px/140px 'Barlow Condensed',sans-serif;text-align:center;margin-bottom:34px;position:relative}
+.div .k{font:500 22px 'Barlow Condensed',sans-serif;letter-spacing:.32em;text-transform:uppercase;opacity:.9;position:relative}
+.div h2{font:300 80px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:14px 0 16px;position:relative;max-width:900px}
+.div p{font-size:25px;font-style:italic;opacity:.92;position:relative}
+.close{display:flex;flex-direction:column;justify-content:center;padding-left:96px;overflow:hidden}
+.close h1{font:300 82px/1.05 'Barlow Condensed',sans-serif;text-transform:uppercase;position:relative}
+.close p{font:400 20px 'Barlow Condensed',sans-serif;letter-spacing:.28em;text-transform:uppercase;margin-top:30px;position:relative}
+
+.foot{position:absolute;left:76px;right:76px;bottom:26px;display:flex;justify-content:space-between;font:400 13px 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);z-index:5}
+.prog{position:absolute;left:0;bottom:0;height:4px;background:var(--red);transition:width .25s;z-index:5}
+.dk .foot{color:rgba(255,255,255,.78)}
+.dk .prog{background:#fff}
+
+@media print{
+  @page{size:1280px 720px;margin:0}
+  html,body{overflow:visible;height:auto;background:#fff}
+  .stage{position:static;transform:none!important;width:auto;height:auto;box-shadow:none;overflow:visible}
+  .slide{position:relative;opacity:1;visibility:visible;width:1280px;height:720px;page-break-after:always;break-after:page;overflow:hidden}
+  .foot,.prog{display:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<main class="stage" id="stage">
+
+<!-- 1 · Portada -->
+<section class="slide dark title">
+  <div class="motif"></div><div class="motif b"></div>
+  <div>
+    <div class="logobox"><img src="logo.png" alt="Universidad de la Costa" onerror="this.parentNode.style.display='none'"></div>
+    <div class="kick2">Presentación del programa</div>
+    <h1>Python para<br>Finanzas y<br>Análisis de Datos</h1>
+  </div>
+  <div class="sub">Minicurso de dos sesiones · Estudiantes de Finanzas y ADE<span>Universidad de la Costa</span></div>
+</section>
+
+<!-- 2 · Motivación -->
+<section class="slide">
+  <header class="hd"><div><div class="kick">Motivación</div><h2>¿Por qué Python si ya existe Excel?</h2></div></header>
+  <div class="txt" style="margin-top:22px">Excel es excelente para <b>explorar y presentar</b>. Se vuelve lento, frágil o inviable cuando hay que <b>repetir, escalar o auditar</b> un análisis — justo lo que exige el trabajo financiero real.</div>
+  <div style="margin-top:20px">
+  <table>
+    <caption>Dónde cambia el juego</caption>
+    <thead><tr><th style="width:19%">Criterio</th><th style="width:38%">Excel</th><th>Python</th></tr></thead>
+    <tbody>
+      <tr><td>Escala</td><td>Se congela con simulaciones o bases grandes</td><td>Millones de filas y miles de escenarios en segundos</td></tr>
+      <tr><td>Reproducibilidad</td><td>Depende de quién tocó qué celda</td><td>Código versionable; mismo resultado, cada vez</td></tr>
+      <tr><td>Modelos avanzados</td><td>Solver y complementos de pago</td><td>Librerías estadísticas y de optimización abiertas</td></tr>
+      <tr><td>Automatización</td><td>Macros en VBA, frágiles</td><td>Scripts programables de punta a punta</td></tr>
+    </tbody>
+  </table></div>
+  <div class="txt" style="margin-top:18px;font-size:16.5px;color:#555">El curso se apoya en literatura de vanguardia — Basilea III/FRTB, López de Prado, Ledoit–Wolf, Damodaran — llevada a aplicaciones concretas, no en teoría abstracta.</div>
+</section>
+
+<!-- 3 · Público, objetivo y metodología -->
+<section class="slide">
+  <header class="hd"><div><div class="kick">El curso en una mirada</div><h2>Público, objetivo y metodología</h2></div></header>
+  <div class="cols">
+    <div class="txt">
+      <ul class="b">
+        <li><b>Dirigido a:</b> estudiantes de Finanzas y Administración de Empresas (ADE).</li>
+        <li><b>Requisito previo:</b> ninguno de programación; nociones básicas de estadística y finanzas.</li>
+        <li><b>Objetivo:</b> que vean aplicaciones reales de Python y su eficiencia frente a Excel para calcular y automatizar — no sintaxis de bajo nivel.</li>
+      </ul>
+    </div>
+    <div class="txt">
+      <ul class="b">
+        <li><b>Formato:</b> 2 sesiones de 3 horas.</li>
+        <li><b>Dinámica por bloque:</b> demo en vivo sobre un problema real, seguida de un ejercicio guiado.</li>
+        <li><b>Entregable:</b> un notebook por bloque, con la teoría breve y espacios para completar.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · Programa general -->
+<section class="slide">
+  <header class="hd"><div><div class="kick">Programa</div><h2>Dos sesiones, diez aplicaciones</h2></div></header>
+  <div class="cols" style="margin-top:28px">
+    <div>
+      <div class="colh">Sesión 1 · Riesgo, opciones y portafolios<small>3 h</small></div>
+      <ul class="agenda">
+        <li><span class="n">1.1</span>VaR y Expected Shortfall con Monte Carlo<span class="d">40′</span></li>
+        <li><span class="n">1.2</span>Valoración de opciones: Black-Scholes<span class="d">30′</span></li>
+        <li><span class="n">1.3</span>Volatilidad cambiante: GARCH<span class="d">35′</span></li>
+        <li><span class="n">1.4</span>Portafolios: shrinkage, HRP y CVaR<span class="d">45′</span></li>
+        <li><span class="n">1.5</span>Backtesting honesto<span class="d">30′</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="colh">Sesión 2 · Datos, valoración y automatización<small>3 h</small></div>
+      <ul class="agenda">
+        <li><span class="n">2.1</span>Consolidar y auditar 50 archivos<span class="d">25′</span></li>
+        <li><span class="n">2.2</span>Screening fundamental de 100+ empresas<span class="d">40′</span></li>
+        <li><span class="n">2.3</span>10.000 créditos amortizados a la vez<span class="d">35′</span></li>
+        <li><span class="n">2.4</span>DCF con incertidumbre<span class="d">35′</span></li>
+        <li><span class="n">2.5</span>Reporte automatizado y dashboard<span class="d">45′</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · Sesión 1 divisor -->
+<section class="slide dark div">
+  <div class="motif"></div>
+  <div class="numblock">1</div>
+  <div class="k">Sesión 1</div>
+  <h2>Riesgo, opciones y portafolios</h2>
+  <p>De medir el riesgo a validar estrategias con honestidad.</p>
+</section>
+
+<!-- 6 · Contenido Sesión 1 -->
+<section class="slide">
+  <header class="hd"><div><div class="kick">Sesión 1 · qué van a ver</div><h2>Riesgo, opciones y portafolios</h2></div></header>
+  <ul class="topics">
+    <li><span class="badge sm">1.1</span><div class="tt"><b>Riesgo de mercado con Monte Carlo</b>Calcular VaR y Expected Shortfall de un portafolio simulando cien mil escenarios en segundos, algo impensable en una hoja de cálculo.</div></li>
+    <li><span class="badge sm">1.2</span><div class="tt"><b>Valoración de opciones con Black-Scholes</b>Valorar una opción europea con la fórmula cerrada y comprobar el resultado con Monte Carlo, reutilizando lo visto en el bloque anterior.</div></li>
+    <li><span class="badge sm">1.3</span><div class="tt"><b>Volatilidad que cambia en el tiempo</b>Modelos que anticipan el riesgo en vez de solo medir el pasado, aplicados a activos colombianos.</div></li>
+    <li><span class="badge sm">1.4</span><div class="tt"><b>Optimización de portafolios que sí funciona</b>Por qué la optimización clásica de portafolios falla en la práctica y qué la reemplaza hoy.</div></li>
+    <li><span class="badge sm">1.5</span><div class="tt"><b>Backtesting honesto</b>Cómo detectar cuándo una estrategia "ganadora" es solo autoengaño estadístico.</div></li>
+  </ul>
+</section>
+
+<!-- 7 · Sesión 2 divisor -->
+<section class="slide dark div">
+  <div class="motif"></div>
+  <div class="numblock">2</div>
+  <div class="k">Sesión 2</div>
+  <h2>Datos, valoración y automatización</h2>
+  <p>Del archivo suelto al reporte que se genera solo.</p>
+</section>
+
+<!-- 8 · Contenido Sesión 2 -->
+<section class="slide">
+  <header class="hd"><div><div class="kick">Sesión 2 · qué van a ver</div><h2>Datos, valoración y automatización</h2></div></header>
+  <ul class="topics">
+    <li><span class="badge sm">2.1</span><div class="tt"><b>Consolidar y auditar datos reales</b>Unificar decenas de archivos y detectar errores automáticamente, en vez de copiar y pegar durante horas.</div></li>
+    <li><span class="badge sm">2.2</span><div class="tt"><b>Screening de empresas</b>Comparar cientos de empresas por sus indicadores financieros y generar un ranking, cambiando una lista en vez de duplicar hojas.</div></li>
+    <li><span class="badge sm">2.3</span><div class="tt"><b>Créditos y amortización a escala</b>Calcular la tabla de amortización de miles de créditos y simular escenarios de tasa a la vez.</div></li>
+    <li><span class="badge sm">2.4</span><div class="tt"><b>Valoración con incertidumbre</b>Un DCF que entrega una probabilidad, no solo una cifra puntual.</div></li>
+    <li><span class="badge sm">2.5</span><div class="tt"><b>Reporte automatizado y dashboard</b>Un reporte mensual que antes tomaba horas, generado con un clic.</div></li>
+  </ul>
+</section>
+
+<!-- 9 · Comparativa -->
+<section class="slide">
+  <header class="hd"><div><div class="kick">Por qué importa</div><h2>Excel frente a Python en lo que van a ver</h2></div></header>
+  <div style="margin-top:24px">
+  <table>
+    <caption>Comparativa por tarea</caption>
+    <thead><tr><th style="width:38%">Tarea</th><th style="width:32%">Excel</th><th>Python</th></tr></thead>
+    <tbody>
+      <tr><td>Simulación de 100.000 escenarios</td><td>Se congela o requiere complementos de pago</td><td>Segundos</td></tr>
+      <tr><td>Consolidar decenas de archivos</td><td>Manual, horas</td><td>Un bucle, segundos</td></tr>
+      <tr><td>Comparar cientos de empresas</td><td>Una hoja por empresa</td><td>Una tabla, una línea</td></tr>
+      <tr><td>Miles de tablas de amortización</td><td>Inviable</td><td>Una operación vectorizada</td></tr>
+      <tr><td>Reporte mensual</td><td>Manual</td><td>Un clic</td></tr>
+    </tbody>
+  </table></div>
+  <div class="txt" style="margin-top:22px;font-style:italic">Regla del curso: Excel para mirar, Python para repetir.</div>
+</section>
+
+<!-- 10 · Requisitos -->
+<section class="slide">
+  <header class="hd"><div><div class="kick">Antes de empezar</div><h2>Requisitos y entregables</h2></div></header>
+  <div class="cols">
+    <div class="txt">
+      <ul class="b">
+        <li><b>Entorno:</b> Python 3.11+ con Jupyter, o Google Colab sin instalar nada.</li>
+        <li><b>Nivel esperado:</b> estadística y finanzas básicas; no se requiere experiencia previa en programación.</li>
+      </ul>
+    </div>
+    <div class="txt">
+      <ul class="b">
+        <li><b>Entregable por sesión:</b> un notebook por bloque, con teoría breve y ejercicios guiados.</li>
+        <li><b>Al terminar:</b> un script propio de automatización de reportes, listo para adaptar.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · Cierre -->
+<section class="slide dark close">
+  <div class="motif"></div><div class="motif b"></div>
+  <h1>Excel para mirar.<br>Python para repetir.</h1>
+  <p>Preguntas</p>
+</section>
+
+<div class="foot"><span>Python para Finanzas y Análisis de Datos</span><span id="n"></span></div>
+<div class="prog" id="prog"></div>
+</main>
+
 <script>
-const s=[...document.querySelectorAll("section")];let i=0;
-const go=n=>{i=Math.max(0,Math.min(s.length-1,n));s.forEach((e,k)=>e.classList.toggle("active",k===i))};
-addEventListener("keydown",e=>{if(["ArrowRight"," ","PageDown"].includes(e.key))go(i+1);if(["ArrowLeft","PageUp"].includes(e.key))go(i-1)});
-addEventListener("click",()=>go(i+1));
-</script></body></html>
+(function(){
+  var stage=document.getElementById('stage');
+  var slides=[].slice.call(stage.querySelectorAll('.slide'));
+  var nEl=document.getElementById('n'), prog=document.getElementById('prog');
+  var cur=0;
+
+  function fit(){var s=Math.min(window.innerWidth/1280,window.innerHeight/720);stage.style.transform='translate(-50%,-50%) scale('+s+')';}
+  function show(k){
+    cur=Math.max(0,Math.min(slides.length-1,k));
+    slides.forEach(function(s,j){s.classList.toggle('on',j===cur);});
+    stage.classList.toggle('dk',slides[cur].classList.contains('dark'));
+    nEl.textContent=(cur+1)+' / '+slides.length;
+    prog.style.width=((cur+1)/slides.length*100)+'%';
+    try{history.replaceState(null,'','#'+(cur+1));}catch(e){}
+  }
+  window.addEventListener('resize',fit);
+  window.addEventListener('keydown',function(e){
+    if(['ArrowRight','PageDown',' ','Enter'].indexOf(e.key)>-1){e.preventDefault();show(cur+1);}
+    else if(['ArrowLeft','PageUp','Backspace'].indexOf(e.key)>-1){e.preventDefault();show(cur-1);}
+    else if(e.key==='Home')show(0);
+    else if(e.key==='End')show(slides.length-1);
+    else if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();else document.exitFullscreen();}
+  });
+  stage.addEventListener('click',function(e){
+    var r=stage.getBoundingClientRect(), x=(e.clientX-r.left)/r.width;
+    if(x<0.18)show(cur-1);else if(x>0.82)show(cur+1);
+  });
+  var tx=null;
+  window.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+  window.addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1));tx=null;});
+
+  fit();
+  var h=parseInt((location.hash||'').slice(1),10);
+  show(isNaN(h)?0:h-1);
+})();
+</script>
+</body>
+</html>
