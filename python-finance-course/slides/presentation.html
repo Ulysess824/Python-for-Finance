@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Python for Finance — Curso</title>
+<style>
+:root{--bg:#0f172a;--fg:#e2e8f0;--ac:#38bdf8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,sans-serif}
+section{display:none;min-height:100vh;padding:8vh 10vw}section.active{display:block}
+h1{font-size:3rem;color:var(--ac)}h2{color:var(--ac)}li{margin:.5rem 0;font-size:1.3rem}
+code{background:#1e293b;padding:.1rem .4rem;border-radius:4px}
+nav{position:fixed;bottom:1rem;right:1.5rem;opacity:.6;font-size:.9rem}
+</style></head><body>
+<section class="active"><h1>Python for Finance</h1><p>Curso práctico en 2 sesiones</p></section>
+<section><h2>Sesión 1 — Modelos cuantitativos</h2><ul>
+<li>1.1 VaR con Monte Carlo</li><li>1.2 Black-Scholes</li><li>1.3 GARCH</li>
+<li>1.4 Optimización de carteras</li><li>1.5 Backtesting</li></ul></section>
+<section><h2>Sesión 2 — Análisis aplicado</h2><ul>
+<li>2.1 Consolidación de datos</li><li>2.2 Screening fundamental</li><li>2.3 Amortización de préstamos</li>
+<li>2.4 DCF con incertidumbre</li><li>2.5 Informe automatizado</li></ul></section>
+<section><h2>Cómo trabajamos</h2><ul>
+<li>Abre el notebook de <code>student/</code> en Colab</li>
+<li>Completa los <code>TODO</code></li>
+<li>Si falla la API: <code>data/sample/</code> se usa automáticamente</li></ul></section>
+<nav>← → para navegar</nav>
+<script>
+const s=[...document.querySelectorAll("section")];let i=0;
+const go=n=>{i=Math.max(0,Math.min(s.length-1,n));s.forEach((e,k)=>e.classList.toggle("active",k===i))};
+addEventListener("keydown",e=>{if(["ArrowRight"," ","PageDown"].includes(e.key))go(i+1);if(["ArrowLeft","PageUp"].includes(e.key))go(i-1)});
+addEventListener("click",()=>go(i+1));
+</script></body></html>
